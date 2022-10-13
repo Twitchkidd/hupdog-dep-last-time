@@ -1,26 +1,30 @@
-import { Suspense } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import Layout from "app/core/layouts/Layout";
-import { useCurrentUser } from "app/core/hooks/useCurrentUser";
-import logout from "app/auth/mutations/logout";
-import logo from "public/logo.png";
-import { useMutation } from "@blitzjs/rpc";
-import { Routes } from "@blitzjs/next";
+import { Suspense } from "react"
+import Image from "next/image"
+import Link from "next/link"
+import Layout from "app/core/layouts/Layout"
+import { useCurrentUser } from "app/core/hooks/useCurrentUser"
+import logout from "app/auth/mutations/logout"
+import logo from "public/logo.png"
+import { useMutation } from "@blitzjs/rpc"
+import { Routes } from "@blitzjs/next"
 /*
  * This file is just for a pleasant getting started page for your new app.
  * You can delete everything in here and start from scratch if you like.
  */
 
 const UserInfo = () => {
-  const currentUser = useCurrentUser();
-  const [logoutMutation] = useMutation(logout);
+  const currentUser = useCurrentUser()
+  const [logoutMutation] = useMutation(logout)
 
   if (currentUser) {
-    return <>
-        <button className="button small" onClick={async () => {
-        await logoutMutation();
-      }}>
+    return (
+      <>
+        <button
+          className="button small"
+          onClick={async () => {
+            await logoutMutation()
+          }}
+        >
           Logout
         </button>
         <div>
@@ -28,9 +32,11 @@ const UserInfo = () => {
           <br />
           User role: <code>{currentUser.role}</code>
         </div>
-      </>;
+      </>
+    )
   } else {
-    return <>
+    return (
+      <>
         <Link href={Routes.SignupPage()}>
           <a className="button small">
             <strong>Sign Up</strong>
@@ -41,15 +47,17 @@ const UserInfo = () => {
             <strong>Login</strong>
           </a>
         </Link>
-      </>;
+      </>
+    )
   }
-};
+}
 
 const Home = () => {
-  return <Layout title="Home">
+  return (
+    <Layout title="Home">
       <div className="container">
         <main>
-          <div className="logo">
+          {/* <div className="logo">
             <Image src={`${logo.src}`} alt="blitzjs" width="256px" height="118px" layout="fixed" />
           </div>
           <p>
@@ -104,11 +112,17 @@ const Home = () => {
             <a className="button-outline" href="https://discord.blitzjs.com" target="_blank" rel="noopener noreferrer">
               Discord Community
             </a>
-          </div>
+          </div> */}
+          <h1>HupDog</h1>
+          <p>Site under construction!</p>
         </main>
 
         <footer>
-          <a href="https://blitzjs.com?utm_source=blitz-new&utm_medium=app-template&utm_campaign=blitz-new" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://blitzjs.com?utm_source=blitz-new&utm_medium=app-template&utm_campaign=blitz-new"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Powered by Blitz.js
           </a>
         </footer>
@@ -246,7 +260,8 @@ const Home = () => {
           }
         `}</style>
       </div>
-    </Layout>;
-};
+    </Layout>
+  )
+}
 
-export default Home;
+export default Home

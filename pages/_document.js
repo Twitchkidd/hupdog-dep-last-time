@@ -1,4 +1,4 @@
-import Document, { Html, Main, NextScript, Head } from 'next/document';
+import Document, { Html, Main, NextScript, Head } from "next/document"
 
 class MyDocument extends Document {
   // Only uncomment if you need to customize this behaviour
@@ -7,15 +7,22 @@ class MyDocument extends Document {
   //   return {...initialProps}
   // }
   render() {
-    return <Html lang="en">
-				<Head />
-				<body>
-					<Main />
-					<NextScript />
-				</body>
-			</Html>;
+    return (
+      <Html lang="en">
+        <Head>
+          <script
+            defer
+            data-domain="hupdog.com"
+            src="https://plausible.io/js/plausible.js"
+          ></script>
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    )
   }
-
 }
 
-export default MyDocument;
+export default MyDocument
